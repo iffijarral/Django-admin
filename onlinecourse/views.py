@@ -124,7 +124,7 @@ def submit(request, course_id):
     choices = extract_answers(request)
     submission.choices.set(choices)
     submission_id = submission.id
-    print('submission_id:'+submission_id)
+    print('submission_id:'+str(submission_id))
     return HttpResponseRedirect(reverse(viewname='onlinecourse:exam_result', args=(course_id, submission_id,)))
 
 # <HINT> Create an exam result view to check if learner passed exam and show their question results and result for each question,
@@ -135,20 +135,17 @@ def submit(request, course_id):
         # Calculate the total score
 def show_exam_result(request, course_id, submission_id):
     course = get_object_or_404(Course, pk=course_id)
-    submission = Submission.objects.get(id = submission_id)      
+    submission = Submission.objects.get(id = submission_id)          
+    choices = submission.choices.all()
     context = {}
-    questions = course.question_set.all()  
-    total_grades = 0
-    # Calculate sum of grades of all questions
-    for question in questions:
-        total_grades += question.grade 
-    # Calculate total grades of submitted answers 
-    earned_grades_total = 0
-    submitted_choices = submission.chocies.all()
-    for choice in submitted_choices:
-        if choice.is_correct:
-            earned_grades_total += choice.question.grade
-        context['choices'] = submitted_choices
-        context['course'] = course
-        context['grade'] = (earned_grades_total/total_grades) * 100
-    return render('onlinecourse/exam_result_bootstrap.htmæ', context)
+    total_grades = 0        
+    
+    for choice in choices:
+        if choice.is_correct:                   
+            total_grades = choice.question.grade + total_grades
+
+    context['grade'] = total_grades
+    context['choices'] = choices
+    context['course'] = course        
+    
+    return render(request,'onlinecourse/exam_result_bootstrap.html', context)
