@@ -1,5 +1,6 @@
 import sys
 from django.utils.timezone import now
+from django.db.models import Sum
 try:
     from django.db import models
 except Exception:
@@ -66,8 +67,12 @@ class Course(models.Model):
     def __str__(self):
         return "Name: " + self.name + "," + \
                "Description: " + self.description
-
-
+    def get_total_grades(self, grade):
+        questions = self.question_set.all()
+        total = 0    
+        for question in questions:
+            total = total + question.grade
+        return int((grade/total) * 100)
 # Lesson model
 class Lesson(models.Model):
     title = models.CharField(max_length=200, default="title")
