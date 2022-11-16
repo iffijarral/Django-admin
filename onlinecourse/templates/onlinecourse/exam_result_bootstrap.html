@@ -50,7 +50,26 @@
         {% endif %}
         <div class="card-columns-vertical mt-1">
         <h5 class="">Exam results</h5>
-            {% for  %}
+        {% for question in course.question_set.all %}
+            <div class="card mb-2">
+                <div class="card-header">
+                    <h5>{{question.question_text}}</h5>
+                </div>
+                <div class="card-body">
+                    {% for choice in question.choice_set.all %}                            
+                        <p class="{% if choice.is_correct and choice in choices %}text-success {% elif choice.is_correct and choice not in choices %}text-danger {% endif %}">
+                            {% if choice in choices and choice.is_correct %}
+                                Correct answer:
+                                {% elif choice.is_correct and choice not in choices %}
+                                Not selected:
+                            {% endif %}
+                            {{choice.choice_text}}
+                        </p>
+                    {% endfor %}
+                </div>
+            </div>
+            
+        {% endfor %}
         </div>
     </div>
 </body>
