@@ -38,4 +38,8 @@ admin.site.register(Lesson, LessonAdmin)
 admin.site.register(Question, QuestionAdmin)
 admin.site.register(Choice)
 admin.site.register(Instructor)
+<<<<<<< HEAD
 admin.site.register(Learner)
+=======
+admin.site.register(Learner)
+>>>>>>> c236b1ddb653573424ea98c4dddeeb8ba3daac7f

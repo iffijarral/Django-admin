@@ -78,7 +78,11 @@
             <!-- A choice submission form example -->
             {% if user.is_authenticated %}
                 
+<<<<<<< HEAD
+            <button type="button" class="btn btn-block btn-info mt-2 mb-3" data-toggle="collapse" data-target="#demo">Start Exam</button>
+=======
             <button type="button" class="btn btn-block btn-info" data-toggle="collapse" data-target="#demo">Start Exam</button>
+>>>>>>> c236b1ddb653573424ea98c4dddeeb8ba3daac7f
             <div id="demo" class="collapse">                                  
                 <form id="questionform" action="{% url 'onlinecourse:submit' course.id %}" method="post">
                     {% for question in course.question_set.all %}
@@ -93,12 +97,20 @@
                                                 class="form-check-input" id="{{choice.id}}"
                                                 value="{{choice.id}}">{{ choice.choice_text }}
                                         </label>
+<<<<<<< HEAD
+                                    </div> 
+=======
                                     </div>
+>>>>>>> c236b1ddb653573424ea98c4dddeeb8ba3daac7f
                                     {% endfor %}
                                 </div>
                             </div>
                         {% endfor %}
+<<<<<<< HEAD
+                        <input class="btn btn-success btn-block mt-2 mb-3" type="submit" value="Submit">
+=======
                         <input class="btn btn-success btn-block" type="submit" value="Submit">
+>>>>>>> c236b1ddb653573424ea98c4dddeeb8ba3daac7f
                 </form> 
             </div>
             {% endif %}
@@ -106,4 +118,8 @@
              https://www.w3schools.com/bootstrap4/bootstrap_forms_inputs.asp-->
     </div>
 </body>
+<<<<<<< HEAD
 </html>
+=======
+</html>
+>>>>>>> c236b1ddb653573424ea98c4dddeeb8ba3daac7f

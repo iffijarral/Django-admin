@@ -1,5 +1,9 @@
 import sys
 from django.utils.timezone import now
+<<<<<<< HEAD
+from django.db.models import Sum
+=======
+>>>>>>> c236b1ddb653573424ea98c4dddeeb8ba3daac7f
 try:
     from django.db import models
 except Exception:
@@ -66,8 +70,17 @@ class Course(models.Model):
     def __str__(self):
         return "Name: " + self.name + "," + \
                "Description: " + self.description
+<<<<<<< HEAD
+    def get_total_grades(self, grade):
+        questions = self.question_set.all()
+        total = 0    
+        for question in questions:
+            total = total + question.grade
+        return int((grade/total) * 100)
+=======
 
 
+>>>>>>> c236b1ddb653573424ea98c4dddeeb8ba3daac7f
 # Lesson model
 class Lesson(models.Model):
     title = models.CharField(max_length=200, default="title")
@@ -133,5 +146,9 @@ class Choice(models.Model):
 # One choice could belong to multiple submissions
 class Submission(models.Model):    
     enrollment = models.ForeignKey(Enrollment, on_delete=models.CASCADE)
+<<<<<<< HEAD
+    choices = models.ManyToManyField(Choice)
+=======
     chocies = models.ManyToManyField(Choice)
+>>>>>>> c236b1ddb653573424ea98c4dddeeb8ba3daac7f
 #    Other fields and methods you would like to design
