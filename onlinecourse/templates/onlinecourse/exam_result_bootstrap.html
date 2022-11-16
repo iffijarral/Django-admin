@@ -39,17 +39,24 @@
     {% if grade > 80 %}
     <div class="alert alert-success">
        <!--HINT Display passed info -->
+<<<<<<< HEAD
        Congratulations, {{user.username}}! You have passed the exam 
+=======
+>>>>>>> c236b1ddb653573424ea98c4dddeeb8ba3daac7f
     </div>
         {% else %}
         <div class="alert alert-danger">
             <!--HINT Display failed info -->
+<<<<<<< HEAD
             Failed Sorry, {{user.username}}! You have failed exam, your grade is {{grade}} 
+=======
+>>>>>>> c236b1ddb653573424ea98c4dddeeb8ba3daac7f
         </div>
         <a class="btn btn-link text-danger" href="{% url 'onlinecourse:course_details' course.id %}">Re-test</a>
         {% endif %}
         <div class="card-columns-vertical mt-1">
         <h5 class="">Exam results</h5>
+<<<<<<< HEAD
         {% for question in course.question_set.all %}
             <div class="card mb-2">
                 <div class="card-header">
@@ -74,3 +81,10 @@
     </div>
 </body>
 </html> 
+=======
+            <!--HINT Display exam results-->
+        </div>
+    </div>
+</body>
+</html>
+>>>>>>> c236b1ddb653573424ea98c4dddeeb8ba3daac7f
